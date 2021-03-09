@@ -1,0 +1,6 @@
+[report]
+include =
+    src/idgx/*
+omit =
+    */test*
+    */upgrades/*
