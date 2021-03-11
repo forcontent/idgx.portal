@@ -58,7 +58,6 @@ setup(
         'collective.cover',
         'collective.easyform',
         'collective.fingerpointing',
-        'collective.jsonmigrator',
         'collective.nitf',
         'plone.api>=1.8.4',
         'plone.app.dexterity',
