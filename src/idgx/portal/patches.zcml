@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="idgx.portal">
+
+
+    <!-- Abaixo os Patches se necessário -->
+
+    <!--monkey:patch
+        description="Descrição."
+        class="Classe python"
+        original="script original"
+        replacement="patche"
+        /-->
+
+
+</configure>

@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="idgx.portal">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="idgx.portal: Portal Padrão"
+      directory="profiles/default"
+      description="Instala complementos necessário para o Portal Padrão."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="idgx.portal (uninstall)"
+      directory="profiles/uninstall"
+      description="Remove complementos necessário para o Portal Padrão."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <!-- Atualizações -->
+  <include package=".upgrades" />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="idgx.portal-hiddenprofiles"
+      />
+
+</configure>
