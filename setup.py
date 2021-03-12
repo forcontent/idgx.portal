@@ -62,7 +62,6 @@ setup(
         'plone.api>=1.8.4',
         'plone.app.dexterity',
         'plone.restapi',
-        'plone.restapi',
         'sc.social.like',
         'z3c.jbot',
     ],
