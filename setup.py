@@ -10,7 +10,7 @@ long_description = '\n\n'.join([
     open('CONTRIBUTORS.rst').read(),
     open('CHANGES.rst').read(),
 ])
-
+entry_point = 'idgx.portal:Recipe'
 
 setup(
     name='idgx.portal',
@@ -84,10 +84,9 @@ setup(
             'plone.testing>=5.0.0',
         ],
     },
-    entry_points="""
-    [z3c.autoinclude.plugin]
-    target = plone
-    [console_scripts]
-    update_locale = idgx.portal.locales.update:update_locale
-    """,
+    entry_points = {
+        'zc.buildout': ['default = {0:s}'.format(entry_point)],
+        'z3c.autoinclude.plugin': ['target = plone'],
+        'console_scripts': ['update_locale = idgx.portal.locales.update:update_locale'],
+    }
 )
