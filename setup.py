@@ -59,6 +59,7 @@ setup(
         'collective.easyform',
         'collective.fingerpointing',
         'collective.nitf',
+        'idgx.temas',
         'plone.api>=1.8.4',
         'plone.app.dexterity',
         'plone.restapi',
