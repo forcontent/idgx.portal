@@ -26,6 +26,7 @@ CURRENT_DIR = path.dirname(__file__)
 SCRIPT_TEMPLATE = """#!/bin/sh
 export PATH={bin_directory}:$PATH
 cd {webpack_directory}
+rm *.lock
 yarn
 {command}"""
 
