@@ -60,11 +60,14 @@ setup(
         'collective.fingerpointing',
         'collective.nitf',
         'idgx.temas',
+        'mr.bob',
         'plone.api>=1.8.4',
         'plone.app.dexterity',
         'plone.restapi',
         'sc.social.like',
         'z3c.jbot',
+        'zc.buildout',
+        'zc.recipe.egg',
     ],
     extras_require={
         'migration': [
@@ -82,6 +85,7 @@ setup(
             'plone.app.robotframework[debug]',
             'plone.app.testing [robot]',
             'plone.testing>=5.0.0',
+            'zc.buildout [test]',
         ],
     },
     entry_points = {
