@@ -65,8 +65,8 @@ let makeConfig = (name, shortName, path, publicPath, callback) => {
           `${options.ploneExcludes.source}|${options.jsExcludes.source}`),
         use: 'babel-loader',
       }, {
-        // Handle SCSS files
-        test: /\.scss$/,
+        // Handle less files
+        test: /\.less$/,
         exclude: options.ploneExcludes,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -78,7 +78,7 @@ let makeConfig = (name, shortName, path, publicPath, callback) => {
               }
             },
             'postcss-loader',
-            'sass-loader'
+            'less-loader'
           ]
         }),
       }, {
@@ -143,10 +143,10 @@ let makeConfig = (name, shortName, path, publicPath, callback) => {
   if (process.env.NODE_ENV === 'testing') {
     config.output.filename = '[name].js';
   }
-  // Add SCSS file if exists
-  let scss = `./app/${options.shortName}.less`;
-  if (fs.existsSync(scss)) {
-    config.entry.unshift(scss);
+  // Add LESS file if exists
+  let less = `./app/${options.shortName}.less`;
+  if (fs.existsSync(less)) {
+    config.entry.unshift(less);
   }
   // Create source maps if in debug mode
   if (process.env.NODE_ENV === 'debug') {
@@ -183,7 +183,7 @@ let makeConfig = (name, shortName, path, publicPath, callback) => {
         },
         target: {
           image: 'app/img/sprite.png',
-          css: 'app/scss/_sprite.less',
+          css: 'app/less/_sprite.less',
         },
         apiOptions: {
           cssImageRef: './img/sprite.png',
