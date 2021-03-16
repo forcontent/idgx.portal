@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app/idgxportal.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --mode=production",
+    "build": "./node_modules/.bin/webpack -p",
     "debug": "NODE_ENV=debug ./node_modules/.bin/webpack --watch",
     "watch": "./node_modules/.bin/webpack -p --watch",
     "test": "NODE_ENV=testing ./node_modules/.bin/karma start --single-run"
