@@ -38,6 +38,7 @@ class HiddenProfiles(object):
             'raptus.autocompletewidget:default',
             'raptus.autocompletewidget:uninstall',
             'sc.social.like:default',
+            'webcouturier.dropdownmenu:default',
         ]
 
 
