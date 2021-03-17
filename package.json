@@ -27,11 +27,12 @@
     "postcss": "^6.0.22",
     "postcss-loader": "^2.1.5",
     "postcss-preset-env": "^6.0.10",
-    "less-loader": "^6.2.0",
+    "less-loader": "^4",
     "sinon": "^6.0.0",
     "style-loader": "^0.21.0",
     "svg-url-loader": "^2.3.2",
     "webpack": "^3",
+    "less": "^4",
     "webpack-spritesmith": "^0.5.2"
   }
 }

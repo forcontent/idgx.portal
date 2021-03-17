@@ -113,15 +113,15 @@ let makeConfig = (name, shortName, path, publicPath, callback) => {
           }
         ]
       }, {
-        test: /\.(eot|svg|ttf|woff2?)$/,  
+        test: /\.(eot|svg|ttf|woff2?)$/,
         exclude: options.ploneExcludes,
-        use: {    
-          loader: 'file-loader',  
-          options: {  
-            name: '[path][name].[ext]',   
-            context: 'app/'   
-          }   
-        } 
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+            context: 'app/'
+          }
+        }
       }, {
         // Handle SVG files inline in CSS
         test: /\.svg/,
