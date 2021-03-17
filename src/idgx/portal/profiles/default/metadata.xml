@@ -9,6 +9,7 @@
     <dependency>profile-collective.nitf:default</dependency>
     <dependency>profile-plone.app.contenttypes:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
+    <dependency>profile-plonetheme.barceloneta:registerless</dependency>
     <dependency>profile-sc.social.like:default</dependency>
   </dependencies>
 </metadata>
