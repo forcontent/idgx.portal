@@ -12,5 +12,6 @@
   <include package="plone.app.contenttypes" />
   <include package="plone.restapi" />
   <include package="sc.social.like" />
+  <include package="webcouturier.dropdownmenu" />
 
 </configure>

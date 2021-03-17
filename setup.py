@@ -61,6 +61,7 @@ setup(
         'collective.nitf',
         'idgx.temas',
         'mr.bob',
+        'webcouturier.dropdownmenu',
         'plone.api>=1.8.4',
         'plone.app.dexterity',
         'plone.restapi',
