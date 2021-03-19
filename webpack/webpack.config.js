@@ -10,15 +10,15 @@ module.exports = makeConfig(
 
   // path
   `${__dirname}/dist`,
-  // `${__dirname}/../src/idgx/portal/browser/static`,
-  // `${__dirname}/../src/idgx/portal/theme`,
+  `${__dirname}/../src/idgx/portal/browser/static`,
 
   //publicPath
-  '',
-  // '++resource++idgx.portal/',
-  // '++theme++idgx.portal/',
+  '++resource++idgx.portal/',
 
   //callback
   (config, options) => {
+    config.entry.unshift(
+      './app/img/preview.png',
+    );
   },
 );
