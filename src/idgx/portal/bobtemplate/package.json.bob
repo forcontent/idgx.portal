@@ -25,6 +25,7 @@
   "repository": {},
   "license": "GPL-2.0",
   "dependencies": {
-    "idgx-recipe-staticresources": "forcontent/idgx.portal#{{{version}}}"
+    "idgx-recipe-staticresources": "forcontent/idgx.portal#{{{version}}}",
+    "tippy.js": "^2.5.0"
   }
 }
