@@ -22,6 +22,8 @@ class HiddenProfiles(object):
             'idgx.portal:uninstall',
             'idgx.temas:default',
             'idgx.temas:uninstall',
+            'idgx.tiles:default',
+            'idgx.tiles:uninstall',
             'plone.app.blocks:default',
             'plone.app.contenttypes:default',
             'plone.app.contenttypes:plone-content',

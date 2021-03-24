@@ -9,6 +9,7 @@
   <include package="collective.fingerpointing" />
   <include package="collective.nitf" />
   <include package="idgx.temas" />
+  <include package="idgx.tiles" />
   <include package="plone.app.contenttypes" />
   <include package="plone.restapi" />
   <include package="sc.social.like" />
