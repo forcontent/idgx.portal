@@ -20,6 +20,8 @@ class HiddenProfiles(object):
             'collective.nitf.upgrades.v2000:default',
             'collective.nitf:default',
             'idgx.portal:uninstall',
+            'idgx.temas:default',
+            'idgx.temas:uninstall',
             'plone.app.blocks:default',
             'plone.app.contenttypes:default',
             'plone.app.contenttypes:plone-content',

@@ -11,10 +11,10 @@
   <include file="dependencies.zcml" />
 
   <!-- ZCML de correções se necessário -->
-  <include file='patches.zcml' />
+  <include file="patches.zcml" />
 
   <!-- Perfis de instalação do Generic Setup -->
-  <include file='profiles.zcml' />
+  <include file="profiles.zcml" />
 
   <!-- Permissões -->
   <include file="permissions.zcml" />
