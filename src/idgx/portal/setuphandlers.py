@@ -28,6 +28,8 @@ class HiddenProfiles(object):
             'plone.app.contenttypes:default',
             'plone.app.contenttypes:plone-content',
             'plone.app.dexterity:default',
+            'plone.app.imagecropping:default',
+            'plone.app.imagecropping:uninstall',
             'plone.app.iterate:plone.app.iterate',
             'plone.app.jquerytools:default',
             'plone.app.multilingual:default',
@@ -85,3 +87,20 @@ def post_install(context):
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
+    uninstall_list = [
+        'collective.cover',
+        'collective.easyform',
+        'collective.fingerpointing',
+        'collective.js.galleria',
+        'collective.nitf',
+        'idgx.temas',
+        'idgx.tiles',
+        'plone.app.imagecropping',
+        'sc.social.like',
+        'webcouturier.dropdownmenu',
+    ]
+
+    qi = api.portal.get_tool('portal_quickinstaller')
+    for prod_name in uninstall_list:
+        if qi.isProductInstalled(prod_name):
+            qi.uninstallProducts([prod_name])
