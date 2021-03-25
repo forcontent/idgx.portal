@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="idgx.portal">
+
+  <!-- Configurações collective.cover -->
+  <record field="layouts"
+          interface="collective.cover.controlpanel.ICoverSettings"
+          name="collective.cover.controlpanel.ICoverSettings.layouts">
+    <field type="plone.registry.field.Dict">
+      <key_type type="plone.registry.field.TextLine">
+        <title>Name</title>
+      </key_type>
+      <title>Layouts</title>
+      <value_type type="plone.registry.field.TextLine">
+        <title>Layout</title>
+      </value_type>
+    </field>
+    <value purge="true">
+      <element key="Layout vazio">[{"type": "row", "children": [{"type": "group", "column-size": 12, "roles": ["Manager"]}]}]</element>
+    </value>
+  </record>
+
+
+  <record field="available_tiles"
+          interface="collective.cover.controlpanel.ICoverSettings"
+          name="collective.cover.controlpanel.ICoverSettings.available_tiles">
+    <value purge="true">
+      <element>collective.cover.banner</element>
+      <element>collective.cover.carousel</element>
+      <element>collective.cover.collection</element>
+      <element>collective.cover.list</element>
+      <element>collective.cover.richtext</element>
+    </value>
+  </record>
+
+
+  <record field="searchable_content_types"
+          interface="collective.cover.controlpanel.ICoverSettings"
+          name="collective.cover.controlpanel.ICoverSettings.searchable_content_types">
+    <value>
+      <element>collective.nitf.content</element>
+      <element>Collection</element>
+      <element>Image</element>
+      <element>Document</element>
+      <element>Link</element>
+    </value>
+  </record>
+
+  <!-- grid padrão do collective.cover -->
+  <record name="collective.cover.controlpanel.ICoverSettings.grid_system">
+    <value>bootstrap3</value>
+  </record>
+
+  <!-- estilos do collective.cover
+  <record name="collective.cover.controlpanel.ICoverSettings.styles" interface="collective.cover.controlpanel.ICoverSettings" field="styles">
+    <value>
+      <element>Nome do estilo aqui</element>
+    </value>
+  </record> -->
+
+
+</registry>

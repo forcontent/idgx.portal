@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="idgx.portal">
+
+  <!-- collective.nitf configurações -->
+  <record name="collective.nitf.controlpanel.INITFSettings.available_sections">
+    <value>
+      <element>Geral</element>
+      <element>Notícias</element>
+    </value>
+  </record>
+  <record name="collective.nitf.controlpanel.INITFSettings.default_section">
+    <value>Notícias</value>
+  </record>
+  <record name="collective.nitf.controlpanel.INITFSettings.available_genres">
+    <value>
+      <element>Analysis</element>
+      <element>Archive material</element>
+      <element>Current</element>
+      <element>Exclusive</element>
+      <element>From the Scene</element>
+      <element>Interview</element>
+      <element>Obituary</element>
+      <element>Opinion</element>
+      <element>Polls and Surveys</element>
+      <element>Press Release</element>
+      <element>Profile</element>
+      <element>Retrospective</element>
+      <element>Review</element>
+      <element>Special Report</element>
+      <element>Summary</element>
+      <element>Wrap</element>
+    </value>
+  </record>
+
+</registry>
