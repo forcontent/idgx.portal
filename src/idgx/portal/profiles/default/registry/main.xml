@@ -6,63 +6,26 @@
 
   <!-- -*- Patch (registro) temporário de Jquery necessários para o uso do collective.cover -*- -->
 
-  <records prefix="plone.bundles/bootstrap"
+  <records prefix="plone.bundles/idgxportal"
            interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+
+    <value key="merge_with">default</value>
     <value key="enabled">True</value>
-    <value key="compile">False</value>
-    <value key="jscompilation">++resource++collective.js.bootstrap/js/bootstrap.min.js</value>
-    <value key="depends">plone</value>
+    <value key="depends">plone-logged-in</value>
+
+    <value key="stub_js_modules">
+      <element>jquery</element>
+      <element>mockup-patterns-modal</element>
+      <element>mockup-patterns-tree</element>
+      <element>mockup-patterns-texteditor</element>
+      <element>mockup-utils</element>
+      <element>pat-base</element>
+      <element>pat-utils</element>
+    </value>
+
+    <value key="jscompilation">++resource++idgx.portal/idgxportal.js</value>
     <!-- Please keep this in sync with upgrades.update_last_compilation -->
     <value key="last_compilation">2021-03-30 17:52:00</value>
-    <value key="resources">
-    </value>
-    <value key="merge_with">default</value>
   </records>
-
-  <records prefix="plone.resources/jquery-tools"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquery.tools.min.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-form"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquerytools.form.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-overlayhelpers"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquerytools.overlayhelpers.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-dateinput"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquery.tools.dateinput.min.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-rangeinput"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquery.tools.rangeinput.min.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-validator"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquery.tools.validator.min.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-plugins"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquery.tools.plugins.min.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-tooltip"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquery.tools.tooltip.min.js</value>
-  </records>
-
-  <records prefix="plone.resources/jquerytools-tooltip-plugins"
-           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++idgx.portal/jquerytools/jquery.tools.tooltip.plugins.min.js</value>
-  </records>
-
 
 </registry>
