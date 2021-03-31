@@ -4,17 +4,9 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="idgx.portal">
 
-  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
-  <include package="z3c.jbot" file="meta.zcml" />
-  <browser:jbot
-      directory="overrides"
-      layer="idgx.portal.interfaces.IIdgxPortalLayer"
-      />
-
   <!-- Publish static files -->
-  <plone:static
+  <browser:resourceDirectory
       name="idgx.portal"
-      type="plone"
       directory="static"
       />
 
