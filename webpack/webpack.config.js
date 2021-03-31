@@ -1,4 +1,5 @@
-const makeConfig = require('idgx-recipe-staticresources');
+const makeConfig = require('idgx-recipe-staticresources'),
+      CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = makeConfig(
