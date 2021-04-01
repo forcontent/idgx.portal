@@ -43,12 +43,11 @@ class HiddenProfiles(object):
             'plone.session:default',
             'raptus.autocompletewidget:default',
             'raptus.autocompletewidget:uninstall',
-            'sc.social.like:default',
             'webcouturier.dropdownmenu:default',
         ]
 
 
-def add_content_central_menu():
+def add_content_central_menu(context):
     """Add Content Central menu option to Folder content type."""
     view = 'centrais-de-conteudo'
     folder_fti = api.portal.get_tool('portal_types')['Folder']
@@ -56,20 +55,7 @@ def add_content_central_menu():
     assert view in folder_fti.view_methods  # nosec
 
 
-def set_social_media_settings():
-    """Update configuration of sc.social.like package."""
-    name = 'sc.social.like.interfaces.ISocialLikeSettings.enabled_portal_types'
-    value = (
-        'collective.cover.content',
-        'collective.nitf.content',
-        'Document',
-        'Event',
-        'Image',
-    )
-    api.portal.set_registry_record(name, value)
-
-
-def add_results_filter_menu():
+def add_results_filter_menu(context):
     """Add Results Filter menu option to Collection content type."""
     view = 'filtro-de-resultados'
     collection_fti = api.portal.get_tool('portal_types')['Collection']
@@ -79,9 +65,8 @@ def add_results_filter_menu():
 
 def post_install(context):
     """Post install script"""
-    set_social_media_settings()
-    add_content_central_menu()
-    add_results_filter_menu()
+    add_content_central_menu(context)
+    add_results_filter_menu(context)
 
 
 def uninstall(context):
@@ -96,7 +81,6 @@ def uninstall(context):
         'idgx.temas',
         'idgx.tiles',
         'plone.app.imagecropping',
-        'sc.social.like',
         'webcouturier.dropdownmenu',
     ]
 
