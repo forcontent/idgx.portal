@@ -53,12 +53,13 @@
     <value>bootstrap3</value>
   </record>
 
-  <!-- estilos do collective.cover
+  <!-- estilos do collective.cover -->
   <record name="collective.cover.controlpanel.ICoverSettings.styles" interface="collective.cover.controlpanel.ICoverSettings" field="styles">
     <value>
-      <element>Nome do estilo aqui</element>
+      <element>Destaque Topo|destaque-topo</element>
+      <element>NOME|CLASSE CSS</element>
     </value>
-  </record> -->
+  </record>
 
 
 </registry>
