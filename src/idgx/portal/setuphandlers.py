@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from Products.CMFPlone.interfaces import INonInstallable
+from collective.cover.controlpanel import ICoverSettings
 from zope.interface import implementer
 from plone import api
 
@@ -63,10 +64,41 @@ def add_results_filter_menu(context):
     assert view in collection_fti.view_methods  # nosec
 
 
+def register_tiles(context):
+    """ Register tiles and make available for inmediate use.
+        FIXME: https://github.com/collective/collective.cover/issues/633
+    """
+    tiles = [u'collective.nitf', u'albuns']
+    remove_tiles = [u'collective.cover.calendar']
+
+    record_tiles = dict(name='plone.app.tiles')
+    record_availables = dict(interface=ICoverSettings, name='available_tiles')
+
+    registered_tiles = api.portal.get_registry_record(**record_tiles)
+    available_tiles = api.portal.get_registry_record(**record_availables)
+
+    for tile in remove_tiles:
+        if tile in registered_tiles:
+            registered_tiles.remove(tile)
+            available_tiles.remove(tile)
+
+    for tile in tiles:
+        if tile not in registered_tiles:
+            registered_tiles.append(tile)
+
+    for tile in tiles:
+        if tile not in available_tiles:
+            available_tiles.append(tile)
+
+    api.portal.set_registry_record(value=registered_tiles, **record_tiles)
+    api.portal.set_registry_record(value=available_tiles, **record_availables)
+
+
 def post_install(context):
     """Post install script"""
     add_content_central_menu(context)
     add_results_filter_menu(context)
+    register_tiles(context)
 
 
 def uninstall(context):
