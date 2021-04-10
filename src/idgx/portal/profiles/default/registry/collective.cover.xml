@@ -42,8 +42,18 @@
   <record field="styles"
           name="collective.cover.controlpanel.ICoverSettings.styles"
           interface="collective.cover.controlpanel.ICoverSettings">
-    <value purge="true">
-      <element>Destaque Topo|destaque-topo</element>
+    <value>
+      <element>-Default-|tile-default</element>
+      <element>Bloco Colorido|bloco-colorido</element>
+      <element>Blocos de itens|bloco-itens</element>
+      <element>Citacao|tile-citacao</element>
+      <element>Destaque Topo|destaque-principal</element>
+      <element>Foto Sobreposta|foto-sobreposta</element>
+      <element>Foto Sobreposta Grande|foto-sobreposta-grande</element>
+      <element>Lista de itens|lista-itens</element>
+      <element>Tag Aviso|tag-aviso</element>
+      <element>Tag Urgente|tag-urgente</element>
+      <element>Titulo de Secao|titulo-secao</element>
     </value>
   </record>
 
