@@ -22,6 +22,15 @@
       post_handler=".setuphandlers.uninstall"
       />
 
+  <genericsetup:registerProfile
+    name="initcontent"
+    title="idgx.portal: Conteúdos demo"
+    directory="profiles/content"
+    description="Criação de conteúdos de exemplo"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    post_handler=".setuphandlers.import_content"
+    />
+
   <!-- Atualizações -->
   <include package=".upgrades" />
 

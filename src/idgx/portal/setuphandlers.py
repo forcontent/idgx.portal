@@ -2,6 +2,12 @@
 from Products.CMFPlone.interfaces import INonInstallable
 from collective.cover.controlpanel import ICoverSettings
 from zope.interface import implementer
+from zope.component import queryUtility
+from plone.registry.interfaces import IRegistry
+from plone.dexterity.utils import addContentToContainer
+from plone.dexterity.utils import createContent
+from plone.dexterity.utils import createContentInContainer
+from zope.i18n.locales import locales
 from plone import api
 
 
@@ -21,6 +27,7 @@ class HiddenProfiles(object):
             'collective.nitf.upgrades.v2000:default',
             'collective.nitf:default',
             'idgx.portal:uninstall',
+            'idgx.portal:initcontent',
             'idgx.temas:default',
             'idgx.temas:uninstall',
             'idgx.tiles:default',
@@ -46,22 +53,6 @@ class HiddenProfiles(object):
             'raptus.autocompletewidget:uninstall',
             'webcouturier.dropdownmenu:default',
         ]
-
-
-def add_content_central_menu(context):
-    """Add Content Central menu option to Folder content type."""
-    view = 'centrais-de-conteudo'
-    folder_fti = api.portal.get_tool('portal_types')['Folder']
-    folder_fti.view_methods += (view,)
-    assert view in folder_fti.view_methods  # nosec
-
-
-def add_results_filter_menu(context):
-    """Add Results Filter menu option to Collection content type."""
-    view = 'filtro-de-resultados'
-    collection_fti = api.portal.get_tool('portal_types')['Collection']
-    collection_fti.view_methods += (view,)
-    assert view in collection_fti.view_methods  # nosec
 
 
 def register_tiles(context):
@@ -94,10 +85,43 @@ def register_tiles(context):
     api.portal.set_registry_record(value=available_tiles, **record_availables)
 
 
+def _publish(content):
+    """Publish the object if it hasn't been published."""
+    portal_workflow = api.portal.get_tool('portal_workflow')
+    if portal_workflow.getInfoFor(content, 'review_state') != 'published':
+        portal_workflow.doActionFor(content, 'publish')
+        return True
+    return False
+
+
+def _get_locales_info(portal):
+    reg = queryUtility(IRegistry, context=portal)
+    language = reg['plone.default_language']
+    parts = (language.split('-') + [None, None])[:3]
+
+    try:
+        locale = locales.getLocale(*parts)
+
+        # If we get a territory, we enable the combined language codes
+        if locale.id.territory:
+            return locale.id.language + '_' + locale.id.territory, True, locale
+        return locale.id.language, False, locale
+    except LoadLocaleError:
+        # default to *some* language so we don't error out
+        return language, False, locales.getLocale('en')
+
+
+def import_content(context):
+    """Create default content."""
+    portal = api.portal.get()
+    target_language, is_combined_language, locale = _get_locales_info(portal)
+    #create_cover(portal, target_language)
+    #create_news_topic(portal, target_language)
+    #create_events_topic(portal, target_language)
+
+
 def post_install(context):
     """Post install script"""
-    add_content_central_menu(context)
-    add_results_filter_menu(context)
     register_tiles(context)
 
 
