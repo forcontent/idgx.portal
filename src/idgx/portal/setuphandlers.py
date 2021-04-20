@@ -1,14 +1,8 @@
 # -*- coding: utf-8 -*-
-from Products.CMFPlone.interfaces import INonInstallable
 from collective.cover.controlpanel import ICoverSettings
-from zope.interface import implementer
-from zope.component import queryUtility
-from plone.registry.interfaces import IRegistry
-from plone.dexterity.utils import addContentToContainer
-from plone.dexterity.utils import createContent
-from plone.dexterity.utils import createContentInContainer
-from zope.i18n.locales import locales
 from plone import api
+from Products.CMFPlone.interfaces import INonInstallable
+from zope.interface import implementer
 
 
 @implementer(INonInstallable)
@@ -83,41 +77,6 @@ def register_tiles(context):
 
     api.portal.set_registry_record(value=registered_tiles, **record_tiles)
     api.portal.set_registry_record(value=available_tiles, **record_availables)
-
-
-def _publish(content):
-    """Publish the object if it hasn't been published."""
-    portal_workflow = api.portal.get_tool('portal_workflow')
-    if portal_workflow.getInfoFor(content, 'review_state') != 'published':
-        portal_workflow.doActionFor(content, 'publish')
-        return True
-    return False
-
-
-def _get_locales_info(portal):
-    reg = queryUtility(IRegistry, context=portal)
-    language = reg['plone.default_language']
-    parts = (language.split('-') + [None, None])[:3]
-
-    try:
-        locale = locales.getLocale(*parts)
-
-        # If we get a territory, we enable the combined language codes
-        if locale.id.territory:
-            return locale.id.language + '_' + locale.id.territory, True, locale
-        return locale.id.language, False, locale
-    except LoadLocaleError:
-        # default to *some* language so we don't error out
-        return language, False, locales.getLocale('en')
-
-
-def import_content(context):
-    """Create default content."""
-    portal = api.portal.get()
-    target_language, is_combined_language, locale = _get_locales_info(portal)
-    #create_cover(portal, target_language)
-    #create_news_topic(portal, target_language)
-    #create_events_topic(portal, target_language)
 
 
 def post_install(context):

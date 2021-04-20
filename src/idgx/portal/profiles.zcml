@@ -28,7 +28,7 @@
     directory="profiles/content"
     description="Criação de conteúdos de exemplo"
     provides="Products.GenericSetup.interfaces.EXTENSION"
-    post_handler=".setuphandlers.import_content"
+    post_handler=".initcontent.import_content"
     />
 
   <!-- Atualizações -->
