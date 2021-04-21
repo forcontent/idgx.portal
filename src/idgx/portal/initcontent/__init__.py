@@ -75,16 +75,16 @@ def cleaning_house(portal):
             'pagina-inicial']
     remove_list = [obj_id for obj_id in rm_ids if obj_id in portal.keys()]
 
-    for obj_id in remove_list:
-        obj = portal[obj_id]
+    if len(remove_list) > 0:
+        for obj_id in remove_list:
+            obj = portal[obj_id]
 
-        if not 'Folder' in obj.portal_type:
-            lockable = ILockable(portal[obj_id])
+            if not 'Folder' in obj.portal_type:
+                lockable = ILockable(portal[obj_id])
 
-            if lockable.locked():
-                lockable.unlock()
-
-    portal.manage_delObjects(remove_list)
+                if lockable.locked():
+                    lockable.unlock()
+        portal.manage_delObjects(remove_list)
 
 
 def create_news_topic(portal, target_language):
@@ -228,7 +228,7 @@ def create_nitf(portal, target_language):
                             item['_type'], id=item['_id'],
                             language=target_language.replace('_', '-').lower(), **item)
                         #pth = os.path.basename(item['_path'].strip('{}'.format(item['_id'])))
-                        pth = item['_path'].strip('{}'.format(item['_id']))
+                        pth = item['_path'].rstrip('{}'.format(item['_id']))
                         content = addContentToContainer(container.unrestrictedTraverse(pth), content)
 
                         content.image = dummy_image(filename=img_data['filename'], b64=img_data['data'])

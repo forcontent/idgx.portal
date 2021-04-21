@@ -65,7 +65,6 @@ setup(
         'plone.api>=1.8.4',
         'plone.app.dexterity',
         'plone.restapi',
-        'sc.embedder',
         'webcouturier.dropdownmenu',
         'z3c.jbot',
         'zc.buildout',
