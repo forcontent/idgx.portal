@@ -15,6 +15,15 @@
     manager="plone.footerportlets" type="plone.portlet.static.Static"
     visible="False" remove="True" />
 
+ <assignment name="navigation" category="context" key="/"
+    manager="plone.leftcolumn" type="plone.portlet.static.Static"
+    visible="False" remove="True" />
+
+ <assignment name="events" category="context" key="/"
+    manager="plone.rightcolumn" type="plone.portlet.static.Static"
+    visible="False" remove="True" />
+
+
  <!-- New portlets IDGX -->
  <assignment name="idgx-navegacao" category="context" key="/"
     manager="plone.footerportlets" type="plone.portlet.static.Static"
