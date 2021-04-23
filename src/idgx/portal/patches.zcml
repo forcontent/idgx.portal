@@ -7,12 +7,13 @@
 
     <!-- Abaixo os Patches se necessário -->
 
-    <!--monkey:patch
-        description="Descrição."
-        class="Classe python"
-        original="script original"
-        replacement="patche"
-        /-->
+    <monkey:patch
+        description="Patching up on the NIFT class for avoid error with load image and thumb"
+        module="collective.nitf.content"
+        original="NITF"
+        replacement=".patches.nitf_content.NITF"
+        order="1000"
+        />
 
 
 </configure>
