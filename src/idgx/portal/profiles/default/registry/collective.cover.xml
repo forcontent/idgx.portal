@@ -25,7 +25,6 @@
           interface="collective.cover.controlpanel.ICoverSettings"
           name="collective.cover.controlpanel.ICoverSettings.searchable_content_types">
     <value>
-      <element>collective.nitf.content</element>
       <element>Collection</element>
       <element>Image</element>
       <element>Document</element>

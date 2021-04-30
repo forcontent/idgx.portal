@@ -3,6 +3,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="idgx.portal">
 
   <i18n:registerTranslations directory="locales" />
@@ -13,14 +14,29 @@
   <!-- ZCML de correções se necessário -->
   <include file="patches.zcml" />
 
+  <!-- ZCML para migrações -->
+  <include package=".migration" zcml:condition="installed transmogrify.dexterity" />
+
+  <!-- ZCML de Adapters -->
+  <include file="adapters.zcml" />
+  <adapter name="has_alt_image" factory=".adapters.has_alt_image" />
+
+  <!-- ZMCL de behaviors (campos adicionais) -->
+  <include file="behaviors.zcml" />
+
   <!-- Perfis de instalação do Generic Setup -->
   <include file="profiles.zcml" />
 
   <!-- Permissões -->
   <include file="permissions.zcml" />
 
+  <!-- ZCML para brwoserviews -->
   <include package=".browser" />
 
-  <include package=".migration" zcml:condition="installed transmogrify.dexterity" />
+  <!-- ZCML de vocabulários -->
+  <include file="vocabulary.zcml" />
+
+  <!-- ZCML do painel de controle -->
+  <include package=".controlpanel" /> 
 
 </configure>

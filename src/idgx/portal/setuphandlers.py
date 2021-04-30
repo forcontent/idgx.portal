@@ -17,9 +17,6 @@ class HiddenProfiles(object):
             'collective.fingerpointing:default',
             'collective.js.galleria:default',
             'collective.js.jqueryui:default',
-            'collective.nitf.upgrades.v1008:default',
-            'collective.nitf.upgrades.v2000:default',
-            'collective.nitf:default',
             'idgx.portal:uninstall',
             'idgx.portal:initcontent',
             'idgx.temas:default',
@@ -53,7 +50,7 @@ def register_tiles(context):
     """ Register tiles and make available for inmediate use.
         FIXME: https://github.com/collective/collective.cover/issues/633
     """
-    tiles = [u'collective.nitf', u'albuns']
+    tiles = [u'albuns']
     remove_tiles = [u'collective.cover.calendar']
 
     record_tiles = dict(name='plone.app.tiles')
@@ -92,7 +89,6 @@ def uninstall(context):
         'collective.easyform',
         'collective.fingerpointing',
         'collective.js.galleria',
-        'collective.nitf',
         'idgx.temas',
         'idgx.tiles',
         'plone.app.imagecropping',

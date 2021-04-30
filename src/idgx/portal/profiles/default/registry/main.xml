@@ -3,16 +3,6 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="idgx.portal">
 
-  <records interface="Products.CMFPlone.interfaces.controlpanel.ITypesSchema" prefix="plone">
-    <value purge="false" key="default_page_types">
-      <element>collective.nift.content</element>
-    </value>
-
-    <value purge="false" key="displayed_types">
-      <element>collective.nitf.content</element>
-    </value>
-  </records>
-
   <record name="plone.displayed_types" interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" field="displayed_types">
     <field type="plone.registry.field.Tuple">
       <default>

@@ -1,0 +1,55 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="idgx.portal">
+
+    <include package="plone.behavior" file="meta.zcml" />
+
+    <!-- Registring and indexing a new behavior for NEWS ITEM -->
+    <plone:behavior
+        title="Sub Title"
+        name="idgx.behavior.subtitle"
+        description="Named sub title where the item will appear."
+        provides=".behaviors.metadata.ISubTitle"
+        factory=".behaviors.metadata.SubTitle"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        marker=".behaviors.metadata.ISubTitleMarker"
+        i18n:attributes="title; description"
+        />
+
+    <plone:behavior
+        title="Section"
+        name="idgx.behavior.section"
+        description="Named section where the item will appear."
+        provides=".behaviors.metadata.ISection"
+        factory=".behaviors.metadata.Section"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        marker=".behaviors.metadata.ISectionMarker"
+        i18n:attributes="title; description"
+        />
+
+    <plone:behavior
+        title="Copyright"
+        name="idgx.behavior.copyright"
+        description="Named copyright where the item will appear."
+        provides=".behaviors.metadata.ICopyright"
+        factory=".behaviors.metadata.Copyright"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        marker=".behaviors.metadata.ICopyrightMarker"
+        i18n:attributes="title; description"
+        />
+
+    <plone:behavior
+      title="Alternative image field"
+      name="idgx.behavior.altimage"
+      description="Provides an alternative (second) image field"
+      provides=".behaviors.metadata.IAltImage"
+      factory=".behaviors.metadata.AltImage"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      marker=".behaviors.metadata.IAltImageMarker"
+      i18n:attributes="title; description"
+    />
+
+</configure>

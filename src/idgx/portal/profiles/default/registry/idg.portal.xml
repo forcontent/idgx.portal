@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="idgx.portal">
+
+  <records interface="idgx.portal.controlpanel.IIDGXSettings" />
+
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.section">
+      <value key="title" i18n:translate="">Section</value>
+      <value key="description" i18n:translate="">An News Item section field</value>
+      <value key="enabled">True</value>
+      <value key="sortable">True</value>
+      <value key="operations">
+          <element>plone.app.querystring.operation.selection.is</element>
+      </value>
+      <value key="vocabulary">idgx.portal.AvailableSections</value>
+      <value key="group" i18n:translate="">IDGX</value>
+  </records>
+
+  <!-- idgx.portal configurações -->
+  <record name="idgx.portal.controlpanel.IIDGXSettings.available_sections">
+    <value>
+      <element>Geral</element>
+      <element>Notícias</element>
+    </value>
+  </record>
+  <record name="idgx.portal.controlpanel.IIDGXSettings.default_section">
+    <value>Notícias</value>
+  </record>
+
+</registry>

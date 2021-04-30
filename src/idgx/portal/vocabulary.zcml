@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="idgx.portal">
+
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      component=".vocabulary.SectionsVocabulary"
+      name="idgx.portal.AvailableSections"
+      />
+
+</configure>
+

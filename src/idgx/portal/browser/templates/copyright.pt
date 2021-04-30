@@ -1,0 +1,6 @@
+<div class="copyright"
+     tal:condition="view/available">
+
+  <p tal:content="context/copyright">Copyright</p>
+
+</div>

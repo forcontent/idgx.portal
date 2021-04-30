@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<object
+    i18n:domain="plone"
+    meta_type="Dexterity FTI"
+    name="News Item"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+  <!-- Enabled behaviors 
+    Sample. https://github.com/plone/plone.app.contenttypes/blob/master/plone/app/contenttypes/profiles/default/types/News_Item.xml
+  -->
+  <property name="behaviors" purge="false">
+    <element value="idgx.behavior.subtitle" />
+    <element value="idgx.behavior.section" />
+    <element value="idgx.behavior.copyright" />
+  </property>
+
+</object>

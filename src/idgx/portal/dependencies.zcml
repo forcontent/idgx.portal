@@ -7,7 +7,6 @@
   <include package="collective.cover" />
   <include package="collective.easyform" />
   <include package="collective.fingerpointing" />
-  <include package="collective.nitf" />
   <include package="idgx.temas" />
   <include package="idgx.tiles" />
   <include package="plone.app.contenttypes" />

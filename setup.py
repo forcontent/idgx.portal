@@ -58,7 +58,6 @@ setup(
         'collective.cover',
         'collective.easyform',
         'collective.fingerpointing',
-        'collective.nitf',
         'idgx.temas',
         'idgx.tiles',
         'mr.bob',
@@ -69,6 +68,10 @@ setup(
         'z3c.jbot',
         'zc.buildout',
         'zc.recipe.egg',
+        'plone.behavior',
+        'zope.schema',
+        'zope.interface',
+        'zope.component',
     ],
     extras_require={
         'migration': [

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-#from collective.cover.controlpanel import ICoverSettings
+from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
+from Products.CMFPlone.utils import _createObjectByType
 from datetime import datetime
 from io import BytesIO
 from plone import api
@@ -9,14 +10,12 @@ from plone.dexterity.utils import addContentToContainer
 from plone.dexterity.utils import createContent
 from plone.dexterity.utils import createContentInContainer
 from plone.i18n.normalizer import idnormalizer
+from plone.locking.interfaces import ILockable
 from plone.namedfile.file import NamedBlobImage
 from plone.registry.interfaces import IRegistry
-from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
-from Products.CMFPlone.utils import _createObjectByType
 from zope.component import queryUtility
 from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.locales import locales
-from plone.locking.interfaces import ILockable
 
 import base64
 import glob
@@ -87,9 +86,12 @@ def cleaning_house(portal):
         portal.manage_delObjects(remove_list)
 
 
-def create_news_topic(portal, target_language):
+def create_topic(portal, target_language):
     news_id = idnormalizer.normalize(_translate(u'news-title', target_language,
         u'News'))
+
+    #images_id = idnormalizer.normalize(_translate(u'images-title', target_language,
+    #    u'Images'))
 
     if news_id not in portal.keys():
         title = _translate(u'news-title', target_language, u'News')
@@ -110,7 +112,7 @@ def create_news_topic(portal, target_language):
         aggregator = container[collection_id]
 
         # Constrain types
-        allowed_types = ['collective.nitf.content', ]
+        allowed_types = ['News Item', ]
         _setup_constrains(container, allowed_types)
 
         container.setOrdering('unordered')
@@ -125,7 +127,7 @@ def create_news_topic(portal, target_language):
         aggregator.query = [
             {'i': u'portal_type',
              'o': u'plone.app.querystring.operation.selection.any',
-             'v': [u'collective.nitf.content'],
+             'v': [u'News Item'],
              },
             {'i': u'review_state',
              'o': u'plone.app.querystring.operation.selection.any',
@@ -134,6 +136,47 @@ def create_news_topic(portal, target_language):
         ]
         aggregator.setLayout('tabular_view')
         _publish(aggregator)
+
+
+    #if images_id not in portal.keys():
+    #    title = _translate(u'images-title', target_language, u'Images')
+    #    description = _translate(u'images-description', target_language,
+    #                             u'Images folder')
+    #    container = createContent(
+    #        'Folder', id=images_id,
+    #        title=title,
+    #        description=description,
+    #        language=target_language.replace('_', '-').lower())
+    #    container = addContentToContainer(portal, container)
+
+    #    imgs_collection_id = idnormalizer.normalize(_translate(u'list-title',
+    #        target_language, u'List'))
+    #    _createObjectByType('Collection', container,
+    #                        id=imgs_collection_id, title=title,
+    #                        description=description)
+    #    aggregator = container[imgs_collection_id]
+
+    #    # Constrain types
+    #    allowed_types = ['Image', ]
+    #    _setup_constrains(container, allowed_types)
+
+    #    container.setOrdering('unordered')
+    #    container.setDefaultPage(imgs_collection_id)
+    #    _publish(container)
+
+    #    # Set the Collection criteria.
+    #    #: Sort on the Effective date
+    #    aggregator.sort_on = u'effective'
+    #    aggregator.sort_reversed = True
+    #    #: Query by Type and Review State
+    #    aggregator.query = [
+    #        {'i': u'portal_type',
+    #         'o': u'plone.app.querystring.operation.selection.any',
+    #         'v': [u'Image'],
+    #         },
+    #    ]
+    #    aggregator.setLayout('tabular_view')
+    #    _publish(aggregator)
 
 
 def read_directory(directory):
@@ -188,8 +231,7 @@ def dummy_image(filename=u'image.jpg', b64=None):
     )
 
 
-def create_nitf(portal, target_language):
-    import transaction
+def create_newsitem(portal, target_language):
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     news_id = idnormalizer.normalize(_translate(u'news-title', target_language,
@@ -205,10 +247,15 @@ def create_nitf(portal, target_language):
                 if item.get('_path'):
                     item['_path'] = "{}/{}".format(portal.id, item['_path'])
 
-                    if item['_type'] == 'collective.nitf.content':
+                    if item['_type'] == 'News Item':
 
                         if item.get('effective'):
                             item['effective'] = datetime_to_integer(item['effective'])
+
+                        img = item.get('_datafield_image', None)
+
+                        if img:
+                            del item['_datafield_image']
 
                         content = createContent(
                             item['_type'], id=item['_id'],
@@ -219,10 +266,31 @@ def create_nitf(portal, target_language):
                             'text/html',
                             'text/x-html-safe'
                         )
+
+                        if img:
+                            content.image = dummy_image(filename=img['filename'], b64=img['data'])
+
+                            if img.get('copyright'):
+                                content.copyright = img['copyright']
+
                         _publish(content)
                         content.reindexObject()
 
-                    elif item['_type'] == 'Image':
+
+def create_images(portal, target_language):
+
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    images_id = idnormalizer.normalize(_translate(u'images-title', target_language,
+        u'Images'))
+    path_to_json = glob.glob('{}/json/**'.format(dir_path))
+
+    if images_id in portal.keys():
+        container = portal[images_id]
+
+        for jpath in path_to_json:
+            for item in read_directory(jpath):
+
+                    if item['_type'] == 'Image':
                         img_data = item['_datafield_image']
                         content = createContent(
                             item['_type'], id=item['_id'],
@@ -284,6 +352,6 @@ def import_content(context):
     portal = api.portal.get()
     cleaning_house(portal)
     target_language, is_combined_language, locale = _get_locales_info(portal)
-    create_news_topic(portal, target_language)
-    create_nitf(portal, target_language)
+    create_topic(portal, target_language)
+    create_newsitem(portal, target_language)
     create_cover(portal, target_language)

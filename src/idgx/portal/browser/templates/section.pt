@@ -1,0 +1,6 @@
+<div class="section"
+     tal:condition="view/available">
+
+  <p property="rnews:articleSection" tal:content="context/section">Section</p>
+
+</div>

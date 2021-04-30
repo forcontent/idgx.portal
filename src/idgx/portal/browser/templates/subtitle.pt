@@ -1,0 +1,6 @@
+<div class="subtitle"
+     tal:condition="view/available">
+
+  <p property="rnews:alternativeHeadline" tal:content="context/subtitle">Subtitle</p>
+
+</div>
