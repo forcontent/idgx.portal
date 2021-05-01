@@ -1,7 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="idgx.portal">
 
   <!-- Publish static files -->
@@ -10,44 +9,7 @@
       directory="static"
       />
 
-  <browser:viewlet
-      name="altimage"
-      for="idgx.portal.behaviors.metadata.IAltImageMarker"
-      view="plone.app.layout.globals.interfaces.IViewView"
-      class=".viewlets.AltImageViewlet"
-      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-      template="templates/altimage.pt"
-      permission="zope2.View"
-    />
-
-  <browser:viewlet
-      name="copyright"
-      for="idgx.portal.behaviors.metadata.ICopyrightMarker"
-      view="plone.app.layout.globals.interfaces.IViewView"
-      class=".viewlets.CopyrightViewlet"
-      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-      template="templates/copyright.pt"
-      permission="zope2.View"
-    />
-
-  <browser:viewlet
-      name="subtitle"
-      for="idgx.portal.behaviors.metadata.ISubTitleMarker"
-      view="plone.app.layout.globals.interfaces.IViewView"
-      class=".viewlets.SubTitleViewlet"
-      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-      template="templates/subtitle.pt"
-      permission="zope2.View"
-    />
-
-  <browser:viewlet
-      name="section"
-      for="idgx.portal.behaviors.metadata.ISectionMarker"
-      view="plone.app.layout.globals.interfaces.IViewView"
-      class=".viewlets.SectionViewlet"
-      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-      template="templates/section.pt"
-      permission="zope2.View"
-    />
+  <!-- Viewlets -->
+  <include package=".viewlets" />
 
 </configure>
