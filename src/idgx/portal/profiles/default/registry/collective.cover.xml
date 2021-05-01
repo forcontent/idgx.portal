@@ -28,6 +28,7 @@
       <element>Collection</element>
       <element>Image</element>
       <element>Document</element>
+      <element>News Item</element>
       <element>Link</element>
     </value>
   </record>
