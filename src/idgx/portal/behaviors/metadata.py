@@ -137,7 +137,7 @@ class SubTitle(MetadataBase):
 
     def _set_subtitle(self, value):
         if not isinstance(value, six.text_type):
-            raise ValueError('Subtitle must be text.')
+            value = u''
         self.context.subtitle = value
     subtitle = property(_get_subtitle, _set_subtitle)
 
@@ -159,6 +159,6 @@ class Copyright(MetadataBase):
 
     def _set_copyright(self, value):
         if not isinstance(value, six.text_type):
-            raise ValueError('Copyright must be text.')
+            value = u''
         self.context.copyright = value
     copyright = property(_get_copyright, _set_copyright)
