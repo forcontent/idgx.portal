@@ -44,4 +44,39 @@
       permission="zope2.View"
     />
 
+
+
+
+
+
+  <browser:page
+      name="galeria_de_albuns"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      permission="zope2.View"
+      class=".menu.GaleriaDeAlbunsView"
+      />
+
+  <browser:page
+      name="galeria_de_fotos"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      permission="zope2.View"
+      class=".menu.GaleriaDeFotosView"
+      />
+
+  <browser:menuItems
+      for="plone.app.contenttypes.interfaces.IFolder"
+      menu="plone_displayviews">
+    <browser:menuItem
+        title="Galeria de albuns"
+        action="galeria_de_albuns"
+        description="Essa view contem a visao da galeria de albuns"
+        />
+    <browser:menuItem
+        title="Galeria de fotos"
+        action="galeria_de_fotos"
+        description="Essa view contem a visao da galeria de fotos"
+        />
+  </browser:menuItems>
+
+
 </configure>
