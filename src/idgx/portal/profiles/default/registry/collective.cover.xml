@@ -44,14 +44,18 @@
           interface="collective.cover.controlpanel.ICoverSettings">
     <value>
       <element>-Default-|tile-default</element>
+      <element>Abas|tile-abas</element>
       <element>Bloco Colorido|bloco-colorido</element>
       <element>Blocos de itens|bloco-itens</element>
       <element>Citacao|tile-citacao</element>
       <element>Destaque Topo|destaque-principal</element>
+      <element>FAQ|tile-faq</element>
       <element>Foto Sobreposta|foto-sobreposta</element>
       <element>Foto Sobreposta Grande|foto-sobreposta-grande</element>
+      <element>Foto Revista|foto-revista</element>
       <element>Lista de itens|lista-itens</element>
       <element>Tag Aviso|tag-aviso</element>
+      <element>Tag Comunicado|tag-comunicado</element>
       <element>Tag Urgente|tag-urgente</element>
       <element>Titulo de Secao|titulo-secao</element>
     </value>
