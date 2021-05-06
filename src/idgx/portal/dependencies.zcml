@@ -8,7 +8,6 @@
   <include package="collective.easyform" />
   <include package="collective.fingerpointing" />
   <include package="idgx.temas" />
-  <include package="idgx.tiles" />
   <include package="plone.app.contenttypes" />
   <include package="plone.restapi" />
   <include package="webcouturier.dropdownmenu" />

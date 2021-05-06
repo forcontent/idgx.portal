@@ -59,7 +59,6 @@ setup(
         'collective.easyform',
         'collective.fingerpointing',
         'idgx.temas',
-        'idgx.tiles',
         'mr.bob',
         'plone.api>=1.8.4',
         'plone.app.dexterity',

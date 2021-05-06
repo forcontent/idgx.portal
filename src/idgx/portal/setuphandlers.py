@@ -21,8 +21,6 @@ class HiddenProfiles(object):
             'idgx.portal:initcontent',
             'idgx.temas:default',
             'idgx.temas:uninstall',
-            'idgx.tiles:default',
-            'idgx.tiles:uninstall',
             'plone.app.blocks:default',
             'plone.app.contenttypes:default',
             'plone.app.contenttypes:plone-content',
@@ -50,7 +48,7 @@ def register_tiles(context):
     """ Register tiles and make available for inmediate use.
         FIXME: https://github.com/collective/collective.cover/issues/633
     """
-    tiles = [u'albuns']
+    #tiles = [u'albuns']
     remove_tiles = [u'collective.cover.calendar']
 
     record_tiles = dict(name='plone.app.tiles')
@@ -64,13 +62,13 @@ def register_tiles(context):
             registered_tiles.remove(tile)
             available_tiles.remove(tile)
 
-    for tile in tiles:
-        if tile not in registered_tiles:
-            registered_tiles.append(tile)
+    #for tile in tiles:
+    #    if tile not in registered_tiles:
+    #        registered_tiles.append(tile)
 
-    for tile in tiles:
-        if tile not in available_tiles:
-            available_tiles.append(tile)
+    #for tile in tiles:
+    #    if tile not in available_tiles:
+    #        available_tiles.append(tile)
 
     api.portal.set_registry_record(value=registered_tiles, **record_tiles)
     api.portal.set_registry_record(value=available_tiles, **record_availables)
@@ -90,7 +88,6 @@ def uninstall(context):
         'collective.fingerpointing',
         'collective.js.galleria',
         'idgx.temas',
-        'idgx.tiles',
         'plone.app.imagecropping',
         'webcouturier.dropdownmenu',
     ]
