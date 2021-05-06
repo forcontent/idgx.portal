@@ -46,6 +46,7 @@
       <element>-Default-|tile-default</element>
       <element>Abas|tile-abas</element>
       <element>Bloco Colorido|bloco-colorido</element>
+      <element>Bloco Colorido Recuado|tile-colorido-recuado</element>
       <element>Blocos de itens|bloco-itens</element>
       <element>Citacao|tile-citacao</element>
       <element>Destaque Topo|destaque-principal</element>
