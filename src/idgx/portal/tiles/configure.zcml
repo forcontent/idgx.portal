@@ -7,6 +7,8 @@
 
   <include package="plone.tiles" file="meta.zcml" />
 
+  <!-- CUSTOM Widgets -->
+  <include package=".configuration_widgets" />
 
   <plone:tile
       name="idgx.portal.basic"
