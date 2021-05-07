@@ -12,8 +12,7 @@
         module="collective.nitf.content"
         original="NITF"
         replacement=".patches.nitf_content.NITF"
-        order="1000"
+        order="9999"
         /-->
-
 
 </configure>

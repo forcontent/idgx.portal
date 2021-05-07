@@ -45,11 +45,10 @@ class HiddenProfiles(object):
 
 
 def register_tiles(context):
-    """ Register tiles and make available for inmediate use.
-        FIXME: https://github.com/collective/collective.cover/issues/633
     """
-    #tiles = [u'albuns']
-    remove_tiles = [u'collective.cover.calendar']
+    """
+    tiles = [u'idgx.portal.basic']
+    remove_tiles = [u'collective.cover.calendar', u'collective.cover.basic']
 
     record_tiles = dict(name='plone.app.tiles')
     record_availables = dict(interface=ICoverSettings, name='available_tiles')
@@ -62,13 +61,13 @@ def register_tiles(context):
             registered_tiles.remove(tile)
             available_tiles.remove(tile)
 
-    #for tile in tiles:
-    #    if tile not in registered_tiles:
-    #        registered_tiles.append(tile)
+    for tile in tiles:
+        if tile not in registered_tiles:
+            registered_tiles.append(tile)
 
-    #for tile in tiles:
-    #    if tile not in available_tiles:
-    #        available_tiles.append(tile)
+    for tile in tiles:
+        if tile not in available_tiles:
+            available_tiles.append(tile)
 
     api.portal.set_registry_record(value=registered_tiles, **record_tiles)
     api.portal.set_registry_record(value=available_tiles, **record_availables)

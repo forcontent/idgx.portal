@@ -39,4 +39,7 @@
   <!-- ZCML do painel de controle -->
   <include package=".controlpanel" /> 
 
+  <!-- ZCML de tiles customizados -->
+  <include package=".tiles" /> 
+
 </configure>

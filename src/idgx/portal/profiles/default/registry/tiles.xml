@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="idgx.portal">
+
+  <record name="plone.app.tiles">
+    <value purge="false">
+      <element>idgx.portal.basic</element>
+    </value>
+  </record>
+
+</registry>

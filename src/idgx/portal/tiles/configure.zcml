@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="idgx.tiles">
+
+  <include package="plone.tiles" file="meta.zcml" />
+
+
+  <plone:tile
+      name="idgx.portal.basic"
+      title="Basic Tile"
+      description="A tile that shows general information about objects."
+      add_permission="cmf.ModifyPortalContent"
+      icon="++resource++collective.cover/img/tile-basic.png"
+      schema=".idgx_basic.IIdgxBasicTile"
+      class=".idgx_basic.IdgxBasicTile"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
+
+</configure>
