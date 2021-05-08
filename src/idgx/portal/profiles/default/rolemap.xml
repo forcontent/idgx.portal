@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<rolemap>
+    <permission name="idgx.portal: Setup" acquire="False">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+</rolemap>

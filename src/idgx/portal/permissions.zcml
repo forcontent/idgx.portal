@@ -3,10 +3,6 @@
   xmlns:zcml="http://namespaces.zope.org/zcml"
   i18n_domain="plone">
 
-  <configure zcml:condition="installed AccessControl.security">
-
   <permission id="idgx.portal.Setup" title="idgx.portal: Setup" />
-
-  </configure>
 
 </configure>
