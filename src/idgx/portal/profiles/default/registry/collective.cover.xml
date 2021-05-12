@@ -53,6 +53,7 @@
       <element>FAQ|tile-faq</element>
       <element>Foto Sobreposta|foto-sobreposta</element>
       <element>Foto Sobreposta Grande|foto-sobreposta-grande</element>
+      <element>Foto Sobreposta Pequena|foto-sobreposta-pequena</element>
       <element>Foto Revista|foto-revista</element>
       <element>Lista de itens|lista-itens</element>
       <element>Tag Aviso|tag-aviso</element>
