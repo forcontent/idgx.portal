@@ -13,10 +13,6 @@ from zope.browserpage import ViewPageTemplateFile
 from zope.interface import implementer
 
 
-
-
-
-
 class IIdgxBasicTile(IBasicTile):
 
     """A tile that shows information about a News Article."""
@@ -69,14 +65,14 @@ class IdgxBasicTile(BasicTile):
         data = {
             'title': title,
             'description': description,
-            'subtitle': obj.subtitle or '',
-            'section' : obj.section or '',
+            'subtitle': getattr(obj, 'subtitle', ''),
+            'section': getattr(obj, 'section', ''),
             'uuid': IUUID(obj),
             'date': True,
             'subjects': True,
             'image': image,
             'alt_text': description or title,
-            'media_producer' : obj.copyright or '',
+            'media_producer': getattr(obj, 'copyright', ''),
         }
 
         data_mgr = ITileDataManager(self)
@@ -84,7 +80,6 @@ class IdgxBasicTile(BasicTile):
 
         msg = 'tile "{0}"" populated with data: {1}'
         logger.debug(msg.format(self.id, data))
-
 
     def _get_field_configuration(self, field):
         """Return a dict with the configuration of the field. This is a
