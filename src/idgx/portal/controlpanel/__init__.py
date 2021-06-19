@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from idgx.portal import _
 from plone.app.registry.browser import controlpanel
 from plone.autoform import directives

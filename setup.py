@@ -51,10 +51,9 @@ setup(
     package_dir={'': 'src'},
     include_package_data=True,
     zip_safe=False,
-    python_requires="==2.7, >=3.8",
+    python_requires="==2.7, >=3.9",
     install_requires=[
-        'setuptools',
-        # -*- Extra requirements: -*-
+        'Products.CMFPlone>=5.2',
         'collective.cover',
         'collective.easyform',
         'collective.fingerpointing',
@@ -62,15 +61,12 @@ setup(
         'mr.bob',
         'plone.api>=1.8.4',
         'plone.app.dexterity',
+        'plone.behavior',
+        'plone.microsite',
         'plone.restapi',
+        'setuptools',
         'webcouturier.dropdownmenu',
         'z3c.jbot',
-        'zc.buildout',
-        'zc.recipe.egg',
-        'plone.behavior',
-        'zope.schema',
-        'zope.interface',
-        'zope.component',
     ],
     extras_require={
         'migration': [
@@ -81,9 +77,6 @@ setup(
         ],
         'test': [
             'plone.app.testing',
-            # Plone KGS does not use this version, because it would break
-            # Remove if your package shall be part of coredev.
-            # plone_coredev tests as of 2016-04-01.
             'plone.app.contenttypes',
             'plone.app.robotframework[debug]',
             'plone.app.testing [robot]',
@@ -91,7 +84,7 @@ setup(
             'zc.buildout [test]',
         ],
     },
-    entry_points = {
+    entry_points={
         'zc.buildout': ['default = {0:s}'.format(entry_point)],
         'z3c.autoinclude.plugin': ['target = plone'],
         'console_scripts': ['update_locale = idgx.portal.locales.update:update_locale'],
