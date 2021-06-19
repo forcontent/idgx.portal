@@ -17,8 +17,8 @@ class HiddenProfiles(object):
             'collective.fingerpointing:default',
             'collective.js.galleria:default',
             'collective.js.jqueryui:default',
-            'idgx.portal:uninstall',
             'idgx.portal:initcontent',
+            'idgx.portal:uninstall',
             'idgx.temas:default',
             'idgx.temas:uninstall',
             'plone.app.blocks:default',
@@ -36,6 +36,8 @@ class HiddenProfiles(object):
             'plone.app.tiles:default',
             'plone.formwidget.contenttree:default',
             'plone.formwidget.contenttree:uninstall',
+            'plone.microsite:default',
+            'plone.microsite:uninstall',
             'plone.restapi:performance',
             'plone.session:default',
             'raptus.autocompletewidget:default',
@@ -88,6 +90,7 @@ def uninstall(context):
         'collective.js.galleria',
         'idgx.temas',
         'plone.app.imagecropping',
+        'plone.microsite',
         'webcouturier.dropdownmenu',
     ]
 

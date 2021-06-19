@@ -9,6 +9,7 @@
     <dependency>profile-idgx.temas:default</dependency>
     <dependency>profile-plone.app.contenttypes:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
+    <dependency>profile-plone.microsite:default</dependency>
     <dependency>profile-plonetheme.barceloneta:registerless</dependency>
     <dependency>profile-webcouturier.dropdownmenu:default</dependency>
   </dependencies>
