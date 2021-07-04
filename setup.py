@@ -63,6 +63,7 @@ setup(
         'plone.app.dexterity',
         'plone.behavior',
         'plone.microsite',
+        'plone.patternslib',
         'plone.restapi',
         'setuptools',
         'webcouturier.dropdownmenu',
