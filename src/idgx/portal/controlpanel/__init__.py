@@ -1,11 +1,20 @@
 # -*- coding: utf-8 -*-
 from idgx.portal import _
+from plone import api
 from plone.app.registry.browser import controlpanel
 from plone.autoform import directives
 from plone.supermodel import model
+from time import time
 from zope import schema
+from zope.interface import invariant
 
 DEFAULT_SECTION = _(u'General')
+DEFAULT_DISCLAIMER = _(
+    u'<p>We use cookies for statistical purposes, '
+    u'to make the ads you see more relevant to you, '
+    u'to help you sign up for our services, '
+    u'or to remember your settings. '
+    u'Check our <a>privacy and cookies policy</a>.</p>')
 
 
 class IIDGXSettings(model.Schema):
@@ -27,6 +36,44 @@ class IIDGXSettings(model.Schema):
         vocabulary=u'idgx.portal.AvailableSections',
         default=DEFAULT_SECTION,
     )
+
+    disclaimer_enabled = schema.Bool(
+        title=_(u'dislaimer_enabled', default=u'Enable disclaimer?'),
+        description=_(
+            u'help_disclaimer',
+            default=u'If selected, a disclaimer will be shown the first time a user visits the site',
+        ),
+        default=False,
+    )
+
+    directives.widget('disclaimer_text', klass='pat-tinymce')
+    disclaimer_text = schema.Text(
+        title=_(u'dislaimer_text', default=u'Disclaimer Text'),
+        description=_(
+            u'help_disclaimer_text',
+            default=u'The text of the disclaimer.',
+        ),
+        required=True,
+        default=DEFAULT_DISCLAIMER,
+    )
+
+    disclaimer_last_modified = schema.ASCIILine(
+        title=_(u'disclaimer_modified', default=u'Last modified'),
+        description=_(
+            u'help_disclaimer_modified',
+            default=u'The timestamp of last time the disclaimer was modified.',
+        ),
+        readonly=True,
+    )
+
+    @invariant
+    def set_last_modified(data):
+        """Store current timestamp on last_modified registry record.
+        This invariant is used as a hook to update the timestamp, as
+        its code is only executed when the form is saved.
+        """
+        name = IIDGXSettings.__identifier__ + '.disclaimer_last_modified'
+        api.portal.set_registry_record(name, value=str(time()))
 
 
 class IDGXSettingsEditForm(controlpanel.RegistryEditForm):
