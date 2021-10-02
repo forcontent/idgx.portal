@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="idgx.portal">
+
+    <record name="idgx.portal.controlpanel.IIDGXSettings.disclaimer_enabled">
+      <field type="plone.registry.field.Bool">
+        <title>Disclaimer Enabled?</title>
+        <description>If selected, a disclaimer will be shown the first time a user visits the site</description>
+        <required>False</required>
+      </field>
+      <value>False</value>
+    </record>
+
+    <record name="idgx.portal.controlpanel.IIDGXSettings.disclaimer_text">
+      <field type="plone.registry.field.Text">
+        <title>Disclaimer Text</title>
+        <description>The text of the disclaimer.</description>
+        <required>True</required>
+      </field>
+      <value>&lt;p&gt;We use cookies for statistical purposes, to make the ads you see more
+                      relevant to you, to help you sign up for our services, or to remember
+                      your settings.
+                      Check our &lt;a&gt;privacy and cookies policy&lt;/a&gt;. &lt;/p&gt;
+      </value>
+    </record>
+
+    <record name="idgx.portal.controlpanel.IIDGXSettings.disclaimer_last_modified">
+      <field type="plone.registry.field.ASCIILine">
+        <title>Last modified</title>
+        <description>The timestamp of last time the disclaimer was modified.</description>
+        <required>True</required>
+      </field>
+      <value>%Y-%m-%d %H:%M</value>
+    </record>
+
+</registry>

@@ -44,4 +44,13 @@
       permission="zope2.View"
     />
 
+  <browser:viewlet
+      name="idgx.portal.disclaimer"
+      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+      class=".disclaimer.DisclaimerViewlet"
+      template="templates/disclaimer.pt"
+      permission="zope2.View"
+      layer="idgx.portal.interfaces.IIdgxPortalLayer"
+      />
+
 </configure>

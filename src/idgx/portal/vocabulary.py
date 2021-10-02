@@ -20,7 +20,7 @@ def SectionsVocabulary(context):
     characters.
     """
     registry = getUtility(IRegistry)
-    settings = registry.forInterface(IIDGXSettings)
+    settings = registry.forInterface(IIDGXSettings, False)
     available_sections = list(settings.available_sections)
     available_sections.sort()
     items = []

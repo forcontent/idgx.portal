@@ -16,7 +16,7 @@ import subprocess
 
 
 _ = MessageFactory('idgx.portal')
-
+PROJECTNAME = 'idgx.portal'
 
 VERSION = pkg_resources.get_distribution('idgx.portal').version
 if 'dev' in VERSION:
